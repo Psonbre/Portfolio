@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'Hacked-KerX';
+    src: url('/assets/fonts/Hacked-KerX.ttf') format('truetype');
+}
+
+body{
+    overflow: hidden;
+    background-color: black;
+    color: #009100;
+    font-family: 'Hacked-KerX', sans-serif;
+    margin: 0;
+    user-select: none;
+}
+
+#particles-js{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.window{
+    box-shadow: rgb(0, 255, 0) 0px 0px 5px;
+    position: absolute;
+    width: 250px;
+    height: 350px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 70%;
+    background-color: black;
+    border: 2px solid #009100;
+    border-top: none;
+}
+
+.addressBar{
+    position: relative;
+    width: 100%;
+    height: 25px;
+    background-color: #009100;
+    outline: 2px solid #009100;
+    display: flex;
+    flex-direction: row-reverse;
+    cursor: move;
+}
+
+.addressBarName{
+    color: lime;
+    margin: 0;
+    margin-left: 5px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.addressBarOptions{
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    width: 80px;
+}
+
+.addressBarOption{
+    height: 18px;
+    width : 18px;
+    margin: auto;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.addressBarOption:hover {
+    transform: scale(1.1) translate(2px, -2px);
+}
+
+.minimize{
+    outline: 2px solid yellow;
+}
+
+.minimize:hover{
+    box-shadow: yellow 0px 0px 10px;
+    background-color: yellow;
+}
+
+.zoom{
+    outline: 2px solid lime;
+}
+
+.zoom:hover{
+    box-shadow: lime 0px 0px 10px;
+    background-color: lime;
+}
+
+.close{
+    outline: 2px solid red;
+}
+
+.close:hover{
+    box-shadow: red 0px 0px 10px;
+    background-color: red;
+}
+  
