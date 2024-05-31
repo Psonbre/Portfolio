@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../scripts/particles.js" defer></script>
+    <script src="../scripts/draggableWindow.js" defer></script>
+</head>
+<body> 
+
+    <template id="windowTemplate">
+        <div class="window">
+            <div class="addressBar">
+                <div class="addressBarName">
+                    <img class="icon" src="/assets/images/profileIcon.svg" alt="" draggable="false">
+                    <p class="text">Profile.txt</p>
+                </div>
+                <div class="addressBarOptions">
+                    <div class="minimize addressBarOption"></div>
+                    <div class="zoom addressBarOption"></div>
+                    <div class="close addressBarOption"></div>
+                </div>
+            </div>
+            <div class="content"></div>
+        </div>
+    </template>
+    
+    <div id="particles-js"></div> 
+
+    <div class="taskBar">
+        <p class="time">11:22</p>
+    </div>
+</body>
+</html>

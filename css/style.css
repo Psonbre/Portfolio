@@ -22,15 +22,26 @@ body{
 .window{
     box-shadow: rgb(0, 255, 0) 0px 0px 5px;
     position: absolute;
-    width: 250px;
-    height: 350px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    min-width: 250px;
+    width: fit-content;
+    left: 0;
+    top: 0;
     opacity: 70%;
     background-color: black;
     border: 2px solid #009100;
     border-top: none;
+}
+
+.window[state="minimized"]{
+    transition: all 0.5s, height 0.2s;
+    height: 0;
+    top: 150%;
+}
+
+.window[state="closed"]{
+    transition: all 0.25s, height 0.1s;
+    height: 0;
+    opacity: 0;
 }
 
 .addressBar{
@@ -46,12 +57,24 @@ body{
 
 .addressBarName{
     color: lime;
+    fill: lime;
     margin: 0;
-    margin-left: 5px;
     position: absolute;
+    height: 100%;
     left: 0;
     top: 50%;
     transform: translate(0, -50%);
+    display: flex;
+}
+
+.addressBarName p {
+    margin: auto;
+    margin-left: 5px;
+}
+
+.addressBarName img{
+    height: 100%;
+    filter: invert(52%) sepia(71%) saturate(1955%) hue-rotate(84deg) brightness(113%) contrast(133%);
 }
 
 .addressBarOptions{
@@ -74,7 +97,7 @@ body{
 }
 
 .minimize{
-    outline: 2px solid yellow;
+    border: 2px solid yellow;
 }
 
 .minimize:hover{
@@ -83,7 +106,7 @@ body{
 }
 
 .zoom{
-    outline: 2px solid lime;
+    border: 2px solid lime;
 }
 
 .zoom:hover{
@@ -92,11 +115,36 @@ body{
 }
 
 .close{
-    outline: 2px solid red;
+    border: 2px solid red;
 }
 
 .close:hover{
     box-shadow: red 0px 0px 10px;
     background-color: red;
+}
+
+.window .content{
+    padding: 10px;
+}
+
+.taskBar{
+    border-top: 2px solid hwb(120 0% 43% / 0.438);
+    background: hwb(120 0% 43% / 0.13);
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+}
+
+.time{
+    position: absolute;
+    right: 0;
+    margin: 0;
+    margin-right: 20px;
+    height: fit-content;
+    font-size: 16pt;
+    top: 50%;
+    vertical-align: middle;
+    transform: translate(0, -50%);
 }
   
