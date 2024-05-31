@@ -6,6 +6,8 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="../scripts/particles.js" defer></script>
+    <script src="../scripts/taskBar.js" defer></script>
+    <script src="../scripts/taskBarIcon.js" defer></script>
     <script src="../scripts/draggableWindow.js" defer></script>
 </head>
 <body> 
@@ -15,7 +17,7 @@
             <div class="addressBar">
                 <div class="addressBarName">
                     <img class="icon" src="/assets/images/profileIcon.svg" alt="" draggable="false">
-                    <p class="text">Profile.txt</p>
+                    <p class="text"></p>
                 </div>
                 <div class="addressBarOptions">
                     <div class="minimize addressBarOption"></div>
@@ -26,10 +28,17 @@
             <div class="content"></div>
         </div>
     </template>
+
+    <template id="taskBarIconTemplate">
+        <div>
+            <img src="/assets/images/profileIcon.svg" alt="">
+        </div>
+    </template>
     
     <div id="particles-js"></div> 
 
-    <div class="taskBar">
+    <div class="taskBar" id="taskBar">
+        <div class="icons"></div>
         <p class="time">11:22</p>
     </div>
 </body>

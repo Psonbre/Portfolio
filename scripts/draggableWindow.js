@@ -2,7 +2,7 @@ class DraggableWindow {
     static instances = [];
 
     constructor(name, icon, content) {
-        this.template = document.querySelector('#windowTemplate');
+        this.template = document.getElementById('windowTemplate');
         this.window = this.template.content.cloneNode(true).firstElementChild;
         this.addressBar = this.window.querySelector('.addressBar');
         this.addressBarNameText = this.addressBar.querySelector('.addressBarName p');
@@ -23,6 +23,8 @@ class DraggableWindow {
 
         this.attachEventListeners();
         DraggableWindow.instances.push(this);
+
+        TaskBar.addTaskBarIcon(this);
 
         this.setInitialPosition();
     }
