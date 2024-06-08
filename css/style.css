@@ -4,6 +4,7 @@
 }
 
 body{
+    cursor: url('/assets/images/cursorNormal.cur'), default;
     overflow: hidden;
     background-color: black;
     color: #009100;
@@ -57,7 +58,7 @@ body{
     outline: 2px solid #009100;
     display: flex;
     flex-direction: row-reverse;
-    cursor: move;
+    cursor: url('/assets/images/cursorMove.cur'), move;
 }
 
 .addressBarName{
@@ -93,7 +94,7 @@ body{
     height: 18px;
     width : 18px;
     margin: auto;
-    cursor: pointer;
+    cursor: url('/assets/images/cursorPointer.cur'), pointer;
     transition: all 0.1s;
 }
 
@@ -142,6 +143,7 @@ body{
 }
 
 .time{
+    color: lime;
     position: absolute;
     right: 0;
     margin: 0;
@@ -165,7 +167,7 @@ body{
     height: 70%;
     filter: invert(52%) sepia(71%) saturate(1955%) hue-rotate(84deg) brightness(113%) contrast(133%);
     transition: all 0.3s;
-    cursor: pointer;
+    cursor: url('/assets/images/cursorPointer.cur'), pointer;
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -188,7 +190,7 @@ body{
     box-sizing: border-box;
     filter: invert(52%) sepia(71%) saturate(1955%) hue-rotate(84deg) brightness(113%) contrast(133%);
     height: 60%;
-    cursor: pointer;
+    cursor: url('/assets/images/cursorPointer.cur'), pointer;
 }
 
 .desktopIcon .icon:hover{

@@ -87,3 +87,5 @@ class DesktopIcon {
 
 new DesktopIcon("Profile.txt", "/assets/images/profileIcon.png", new DraggableWindow("profile.txt", "/assets/images/profileIcon.png", "test avec quand même beaucou pde texte qui prend pas mal de place sur la feneêtre"));
 new DesktopIcon("Prix.txt", "/assets/images/AwardsIcon.png", new DraggableWindow("profile.txt", "/assets/images/AwardsIcon.png", '<p>test avec quand même beaucou pde texte qui \n prend pas mal de place sur la feneêtre</p>'));
+new DesktopIcon("Scolaire.txt", "/assets/images/scolaire.png", new DraggableWindow("Scolaire.txt", "/assets/images/scolaire.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
