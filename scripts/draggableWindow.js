@@ -8,10 +8,11 @@ class DraggableWindow {
         this.addressBarNameText = this.addressBar.querySelector('.addressBarName p');
         this.addressBarNameIcon = this.addressBar.querySelector('.addressBarName img');
         this.icon = icon;
+        this.taskBarIcon = TaskBar.addTaskBarIcon(this);
         this.addressBarNameIcon.setAttribute('src',  this.icon);
-        this.minimize = this.addressBar.querySelector('.minimize');
-        this.zoom = this.addressBar.querySelector('.zoom');
-        this.close = this.addressBar.querySelector('.close');
+        this.minimizeIcon = this.addressBar.querySelector('.minimize');
+        this.zoomIcon = this.addressBar.querySelector('.zoom');
+        this.closeIcon = this.addressBar.querySelector('.close');
         this.content = this.window.querySelector('.content');
         this.addressBarNameText.textContent = name;
         this.content.innerHTML = content;
@@ -23,21 +24,20 @@ class DraggableWindow {
 
         this.attachEventListeners();
         DraggableWindow.instances.push(this);
-
-        TaskBar.addTaskBarIcon(this);
+        this.close();
 
         this.setInitialPosition();
     }
-
+    
     attachEventListeners() {
         this.addressBar.addEventListener('mousedown', this.startDrag.bind(this));
         document.addEventListener('mouseup', this.endDrag.bind(this));
         document.addEventListener('mousemove', this.drag.bind(this));
-        this.close.addEventListener('click', this.closeWindow.bind(this));
-        this.minimize.addEventListener('click', this.minimizeWindow.bind(this));
-        this.zoom.addEventListener('click', this.toggleZoomWindow.bind(this));
+        this.closeIcon.addEventListener('click', this.close.bind(this));
+        this.minimizeIcon.addEventListener('click', this.minimize.bind(this));
+        this.zoomIcon.addEventListener('click', this.toggleZoom.bind(this));
     }
-
+    
     setInitialPosition() {
         requestAnimationFrame(() => {
             const rect = this.window.getBoundingClientRect();
@@ -48,20 +48,37 @@ class DraggableWindow {
             this.offsetY = centerY;
         });
     }
-
-    closeWindow(event){
-        this.window.setAttribute('state', 'closed');
-    }
-
-    minimizeWindow(event){
+    
+    close(event){
         this.window.setAttribute('state', 'minimized');
+        if (this.taskBarIcon != null) this.taskBarIcon.destroy();
+        setTimeout(() => this.hide(), 500);
+    }
+    
+    minimize(event){
+        this.window.setAttribute('state', 'minimized');
+        this.taskBarIcon.setFocused(false);
     }
 
-    toggleZoomWindow(event){
+    open(){
+        this.window.style.display = 'block';
+        setTimeout(() =>{
+            this.window.setAttribute('state', 'opened');
+            DraggableWindow.focusWindow(this);
+        }, 0)
+    }
+
+    toggleOpened(){
+        if (this.window.getAttribute('state') == 'opened' && this.window.style.zIndex == 1) this.minimize();
+        else  this.open();
+    }
+
+    toggleZoom(event){
 
     }
 
     startDrag(event) {
+        DraggableWindow.focusWindow(this);
         this.startX = event.clientX;
         this.startY = event.clientY;
         this.addressBar.classList.add('dragging');
@@ -93,12 +110,18 @@ class DraggableWindow {
         this.addressBar.classList.remove('dragging');
     }
 
-    static removeAllWindows() {
+    hide(){
+        this.window.style.display = 'none';
+    }
+
+    static focusWindow(windowToFocus){
         DraggableWindow.instances.forEach(instance => {
-            instance.window.remove();
+            instance.window.setAttribute('focused', false);
+            instance.window.style.zIndex = 0;
+            instance.taskBarIcon.setFocused(false);
         });
-        DraggableWindow.instances = [];
+        windowToFocus.window.setAttribute('focused', true);
+        windowToFocus.window.style.zIndex = 1;
+        windowToFocus.taskBarIcon.setFocused(true);
     }
 }
-
-new DraggableWindow("profile.txt", "/assets/images/profileIcon.svg", null);

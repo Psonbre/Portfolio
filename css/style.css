@@ -26,10 +26,15 @@ body{
     width: fit-content;
     left: 0;
     top: 0;
-    opacity: 70%;
+    opacity: 50%;
     background-color: black;
     border: 2px solid #009100;
     border-top: none;
+    transition: top 0.5s, height 0.2s;
+}
+
+.window[focused="true"]{
+    opacity: 1;
 }
 
 .window[state="minimized"]{
@@ -129,10 +134,10 @@ body{
 
 .taskBar{
     border-top: 2px solid hwb(120 0% 43% / 0.438);
-    background: hwb(120 0% 43% / 0.13);
+    background: rgba(0, 145, 0, 0);
     position: absolute;
     width: 100%;
-    height: 40px;
+    height: 60px;
     bottom: 0;
 }
 
@@ -146,5 +151,55 @@ body{
     top: 50%;
     vertical-align: middle;
     transform: translate(0, -50%);
+}
+
+.icons{
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    margin: auto;
+    align-items: center;
+}
+
+.taskBarIcon{
+    height: 70%;
+    filter: invert(52%) sepia(71%) saturate(1955%) hue-rotate(84deg) brightness(113%) contrast(133%);
+    transition: all 0.3s;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.taskBarIcon:hover, .taskBarIcon[focused="true"]{
+    border-bottom: 1px solid lime;
+    transform: scale(1.2);
+}
+
+.desktopIcon{
+    position: absolute;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 5px;
+    height: 90px;
+    width: 90px;
+}
+
+.desktopIcon .icon{
+    box-sizing: border-box;
+    filter: invert(52%) sepia(71%) saturate(1955%) hue-rotate(84deg) brightness(113%) contrast(133%);
+    height: 60%;
+    cursor: pointer;
+}
+
+.desktopIcon .icon:hover{
+    background-color: lime;
+    filter: unset;
+}
+
+.desktopIcon .name{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
 }
   
