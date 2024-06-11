@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Hacked-KerX';
-    src: url('/assets/fonts/Hacked-KerX.ttf') format('truetype');
+    src: url('/assets/fonts/glitchFont.ttf') format('truetype');
 }
 
 body{
@@ -149,7 +149,7 @@ body{
     margin: 0;
     margin-right: 20px;
     height: fit-content;
-    font-size: 16pt;
+    font-size: 20pt;
     top: 50%;
     vertical-align: middle;
     transform: translate(0, -50%);
@@ -181,9 +181,12 @@ body{
     position: absolute;
     box-sizing: border-box;
     text-align: center;
-    padding: 5px;
-    height: 90px;
-    width: 90px;
+    height: 4vw;
+    width: 4vw;
+    overflow: visible;
+    overflow-wrap: break-word;
+    font-size: 0.5vw;
+
 }
 
 .desktopIcon .icon{
@@ -203,5 +206,6 @@ body{
     padding: 0;
     text-align: center;
     width: 100%;
+    color: lime;
 }
   

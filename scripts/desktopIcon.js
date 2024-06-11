@@ -20,6 +20,17 @@ class DesktopIcon {
         this.attachEventListeners();
         this.setInitialPosition();
     }
+
+    static resetAllIconPositions(){
+        for (let i = 0; i < DesktopIcon.instances.length; i++){
+            let instance = DesktopIcon.instances[i];
+            const centerX = Math.floor(i / 13) * instance.el.offsetWidth;
+            const centerY = ((i + 1) % 13 - 1) * instance.el.offsetHeight;
+            instance.el.style.transform = `translate(${centerX}px, ${centerY}px)`;
+            instance.offsetX = centerX;
+            instance.offsetY = centerY;
+        }
+    }
     
     attachEventListeners() {
         this.iconEl.addEventListener('mousedown', this.startDrag.bind(this));
@@ -31,11 +42,7 @@ class DesktopIcon {
     }
     
     setInitialPosition() {
-        const centerX = Math.floor(DesktopIcon.instances.length / 10) * 90;
-        const centerY = (DesktopIcon.instances.length % 10 - 1) * 90;
-        this.el.style.transform = `translate(${centerX}px, ${centerY}px)`;
-        this.offsetX = centerX;
-        this.offsetY = centerY;
+
     }
 
     startDrag(event) {
@@ -78,14 +85,28 @@ class DesktopIcon {
         this.offsetX += dx;
         this.offsetY += dy;
 
-        this.offsetX = Math.round(this.offsetX / 90) * 90;
-        this.offsetY = Math.round(this.offsetY / 90) * 90;
+        this.offsetX = Math.round(this.offsetX / this.el.offsetWidth) * this.el.offsetWidth;
+        this.offsetY = Math.round(this.offsetY / this.el.offsetHeight) * this.el.offsetHeight;
         const newTransform = `translate(${this.offsetX}px, ${this.offsetY}px)`;
         this.el.style.transform = newTransform;
     }
 }
 
-new DesktopIcon("Profile.txt", "/assets/images/profileIcon.png", new DraggableWindow("profile.txt", "/assets/images/profileIcon.png", "test avec quand même beaucou pde texte qui prend pas mal de place sur la feneêtre"));
-new DesktopIcon("Prix.txt", "/assets/images/AwardsIcon.png", new DraggableWindow("profile.txt", "/assets/images/AwardsIcon.png", '<p>test avec quand même beaucou pde texte qui \n prend pas mal de place sur la feneêtre</p>'));
+new DesktopIcon("Profile.txt", "/assets/images/profileIcon.png", new DraggableWindow("profile.txt", "/assets/images/profileIcon.png", "test avec quand même beaucou pde texte qui prend pas mal de place sur la fenêtre"));
+new DesktopIcon("Prix.txt", "/assets/images/AwardsIcon.png", new DraggableWindow("Prix.txt", "/assets/images/AwardsIcon.png", '<p>test avec quand même beaucou pde texte qui \n prend pas mal de place sur la feneêtre</p>'));
 new DesktopIcon("Scolaire.txt", "/assets/images/scolaire.png", new DraggableWindow("Scolaire.txt", "/assets/images/scolaire.png", '<img src="/assets/images/scolaire.png">'));
 new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+new DesktopIcon("Travail.txt", "/assets/images/travail.png", new DraggableWindow("Experiences de travail.txt", "/assets/images/travail.png", '<img src="/assets/images/scolaire.png">'));
+
+DesktopIcon.resetAllIconPositions();
+window.addEventListener('resize', DesktopIcon.resetAllIconPositions);
