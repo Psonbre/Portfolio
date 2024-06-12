@@ -1540,4 +1540,4 @@ var pJS = function(tag_id, params){
   
   };
 
-  particlesJS.load('particles-js', '../assets/particles/particles.json');
+  particlesJS.load('particles-js', './assets/particles/particles.json');
