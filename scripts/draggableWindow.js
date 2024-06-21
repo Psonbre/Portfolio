@@ -1,7 +1,7 @@
 class DraggableWindow {
     static instances = [];
 
-    constructor(name, icon, content) {
+    constructor(name, icon, contentPath) {
         this.template = document.getElementById('windowTemplate');
         this.window = this.template.content.cloneNode(true).firstElementChild;
         this.addressBar = this.window.querySelector('.addressBar');
@@ -15,7 +15,11 @@ class DraggableWindow {
         this.closeIcon = this.addressBar.querySelector('.close');
         this.content = this.window.querySelector('.content');
         this.addressBarNameText.textContent = name;
-        this.content.innerHTML = content;
+        fetch(contentPath)
+            .then(response => response.text())
+            .then(data => {
+                this.content.innerHTML = data;
+        });
         this.offsetX = 0;
         this.offsetY = 0;
 
