@@ -93,6 +93,7 @@ class DesktopIcon {
 }
 
 new DesktopIcon("Profile.txt", "./assets/images/ProfileIcon.png", new DraggableWindow("profile.txt", "./assets/images/ProfileIcon.png", "./windowContent/profile.html"));
+new DesktopIcon("Éducation.tml", "./assets/images/education.png", new DraggableWindow("Éducation.tml", "./assets/images/education.png", "./windowContent/education.html"));
 
 DesktopIcon.resetAllIconPositions();
 window.addEventListener('resize', DesktopIcon.resetAllIconPositions);

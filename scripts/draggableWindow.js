@@ -64,14 +64,20 @@ class DraggableWindow {
         this.taskBarIcon.setFocused(false);
     }
 
-    open(){
+    open() {
         this.window.style.display = 'block';
-        setTimeout(() =>{
+        setTimeout(() => {
             this.window.setAttribute('state', 'opened');
             DraggableWindow.focusWindow(this);
-        }, 0)
+            
+            // Apply typewriter effect to text elements inside the content
+            const textElements = this.content.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li'); // Adjust the selectors as needed
+            textElements.forEach(element => {
+                typewriterEffect(element);
+            });
+        }, 0);
     }
-
+    
     toggleOpened(){
         if (this.window.getAttribute('state') == 'opened' && this.window.style.zIndex == 1) this.minimize();
         else  this.open();
@@ -128,4 +134,20 @@ class DraggableWindow {
         windowToFocus.window.style.zIndex = 1;
         windowToFocus.taskBarIcon.setFocused(true);
     }
+}
+
+function typewriterEffect(element) {
+    const text = element.textContent;
+    element.textContent = '';
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 500 / text.length);
+        }
+    }
+
+    type();
 }
