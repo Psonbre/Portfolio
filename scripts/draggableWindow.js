@@ -9,7 +9,7 @@ class DraggableWindow {
         this.addressBarNameIcon = this.addressBar.querySelector('.addressBarName img');
         this.icon = icon;
         this.taskBarIcon = TaskBar.addTaskBarIcon(this);
-        this.addressBarNameIcon.setAttribute('src',  this.icon);
+        this.addressBarNameIcon.setAttribute('src', this.icon);
         this.minimizeIcon = this.addressBar.querySelector('.minimize');
         this.zoomIcon = this.addressBar.querySelector('.zoom');
         this.closeIcon = this.addressBar.querySelector('.close');
@@ -19,7 +19,7 @@ class DraggableWindow {
             .then(response => response.text())
             .then(data => {
                 this.content.innerHTML = data;
-        });
+            });
         this.offsetX = 0;
         this.offsetY = 0;
 
@@ -32,7 +32,7 @@ class DraggableWindow {
 
         this.setInitialPosition();
     }
-    
+
     attachEventListeners() {
         this.addressBar.addEventListener('mousedown', this.startDrag.bind(this));
         document.addEventListener('mouseup', this.endDrag.bind(this));
@@ -41,25 +41,27 @@ class DraggableWindow {
         this.minimizeIcon.addEventListener('click', this.minimize.bind(this));
         this.zoomIcon.addEventListener('click', this.toggleZoom.bind(this));
     }
-    
+
     setInitialPosition() {
         requestAnimationFrame(() => {
             const rect = this.window.getBoundingClientRect();
-            const centerX = (window.innerWidth - rect.width) / 2;
-            const centerY = (window.innerHeight - rect.height) / 2;
-            this.window.style.transform = `translate(${centerX}px, ${centerY}px)`;
-            this.offsetX = centerX;
-            this.offsetY = centerY;
+            const centerX = (window.innerWidth / 2);
+            const centerY = (window.innerHeight / 3);
+            const centerXvw = (centerX / window.innerWidth) * 100;
+            const centerYvh = (centerY / window.innerHeight) * 100;
+            this.window.style.transform = `translate(${centerXvw}vh, ${centerYvh}vh)`;
+            this.offsetX = centerXvw;
+            this.offsetY = centerYvh;
         });
     }
-    
-    close(event){
+
+    close(event) {
         this.window.setAttribute('state', 'minimized');
         if (this.taskBarIcon != null) this.taskBarIcon.destroy();
         setTimeout(() => this.hide(), 500);
     }
-    
-    minimize(event){
+
+    minimize(event) {
         this.window.setAttribute('state', 'minimized');
         this.taskBarIcon.setFocused(false);
     }
@@ -69,23 +71,21 @@ class DraggableWindow {
         setTimeout(() => {
             this.window.setAttribute('state', 'opened');
             DraggableWindow.focusWindow(this);
-            
+
             // Apply typewriter effect to text elements inside the content
-            const textElements = this.content.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li'); // Adjust the selectors as needed
+            const textElements = this.content.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li:not([noTypewrite])'); // Adjust the selectors as needed
             textElements.forEach(element => {
                 typewriterEffect(element);
             });
         }, 0);
     }
-    
-    toggleOpened(){
+
+    toggleOpened() {
         if (this.window.getAttribute('state') == 'opened' && this.window.style.zIndex == 1) this.minimize();
-        else  this.open();
+        else this.open();
     }
 
-    toggleZoom(event){
-
-    }
+    toggleZoom(event) {}
 
     startDrag(event) {
         DraggableWindow.focusWindow(this);
@@ -93,26 +93,28 @@ class DraggableWindow {
         this.startY = event.clientY;
         this.addressBar.classList.add('dragging');
         const transform = window.getComputedStyle(this.window).transform;
-    
+
         if (transform === 'none' || !transform.startsWith('matrix')) {
             this.offsetX = 0;
             this.offsetY = 0;
         } else {
             const translate = transform.match(/matrix\(([\d\.\-]+),\s*([\d\.\-]+),\s*([\d\.\-]+),\s*([\d\.\-]+),\s*([\d\.\-]+),\s*([\d\.\-]+)\)/);
             if (translate) {
-                this.offsetX = parseFloat(translate[5]);
-                this.offsetY = parseFloat(translate[6]);
+                this.offsetX = parseFloat(translate[5]) / window.innerWidth * 100;
+                this.offsetY = parseFloat(translate[6]) / window.innerHeight * 100;
             }
         }
     }
-    
+
     drag(event) {
         if (!this.addressBar.classList.contains('dragging')) {
             return;
         }
         const dx = event.clientX - this.startX;
         const dy = event.clientY - this.startY;
-        const newTransform = `translate(${this.offsetX + dx}px, ${this.offsetY + dy}px)`;
+        const dxVw = (dx / window.innerWidth) * 100;
+        const dyVh = (dy / window.innerHeight) * 100;
+        const newTransform = `translate(${Math.max(-(this.window.offsetWidth/window.innerWidth) * 100 + 1, Math.min(this.offsetX + dxVw, 99))}vw, ${Math.max(0, Math.min(this.offsetY + dyVh, 99))}vh)`;
         this.window.style.transform = newTransform;
     }
 
@@ -120,11 +122,11 @@ class DraggableWindow {
         this.addressBar.classList.remove('dragging');
     }
 
-    hide(){
+    hide() {
         this.window.style.display = 'none';
     }
 
-    static focusWindow(windowToFocus){
+    static focusWindow(windowToFocus) {
         DraggableWindow.instances.forEach(instance => {
             instance.window.setAttribute('focused', false);
             instance.window.style.zIndex = 0;

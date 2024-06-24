@@ -3,6 +3,10 @@
     src: url('../assets/fonts/glitchFont.ttf') format('truetype');
 }
 
+a{
+    cursor: url('../assets/images/cursorPointer.cur'), pointer;
+}
+
 body{
     cursor: url('../assets/images/cursorNormal.cur'), default;
     overflow: hidden;
@@ -200,6 +204,8 @@ body {
     position: absolute;
     box-sizing: border-box;
     text-align: center;
+    margin-top: 1vh;
+    margin-left: 0.5vh;
     height: 8vh;
     width: 8vh;
     overflow: visible;
