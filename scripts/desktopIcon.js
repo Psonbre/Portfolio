@@ -18,7 +18,6 @@ class DesktopIcon {
         DesktopIcon.instances.push(this);
 
         this.attachEventListeners();
-        this.setInitialPosition();
     }
 
     static resetAllIconPositions(){
@@ -39,10 +38,6 @@ class DesktopIcon {
         this.iconEl.addEventListener('dblclick', () => {
             this.window.open();
         })
-    }
-    
-    setInitialPosition() {
-
     }
 
     startDrag(event) {
@@ -92,8 +87,10 @@ class DesktopIcon {
     }
 }
 
-new DesktopIcon("Profile.txt", "./assets/images/ProfileIcon.png", new DraggableWindow("profile.txt", "./assets/images/ProfileIcon.png", "./windowContent/profile.html"));
-new DesktopIcon("Éducation.tml", "./assets/images/education.png", new DraggableWindow("Éducation.tml", "./assets/images/education.png", "./windowContent/education.html"));
+new DesktopIcon("profile.info", "./assets/images/ProfileIcon.svg", new DraggableWindow("profile.txt", "./assets/images/ProfileIcon.svg", "./windowContent/profile.html"));
+new DesktopIcon("éducation.tml", "./assets/images/education.svg", new DraggableWindow("éducation.tml", "./assets/images/education.svg", "./windowContent/education.html"));
+new DesktopIcon("travail.info", "./assets/images/work.svg", new DraggableWindow("travail.info", "./assets/images/education.svg", "./windowContent/work.html"));
+new DesktopIcon("réseaux.con", "./assets/images/connections.svg", new DraggableWindow("réseaux.con", "./assets/images/connections.svg", "./windowContent/education.html"));
 
 DesktopIcon.resetAllIconPositions();
 window.addEventListener('resize', DesktopIcon.resetAllIconPositions);

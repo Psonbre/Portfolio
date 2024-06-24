@@ -34,6 +34,7 @@ class DraggableWindow {
     }
 
     attachEventListeners() {
+        this.window.addEventListener('click', () => DraggableWindow.focusWindow(this))
         this.addressBar.addEventListener('mousedown', this.startDrag.bind(this));
         document.addEventListener('mouseup', this.endDrag.bind(this));
         document.addEventListener('mousemove', this.drag.bind(this));
@@ -57,7 +58,7 @@ class DraggableWindow {
 
     close(event) {
         this.window.setAttribute('state', 'minimized');
-        if (this.taskBarIcon != null) this.taskBarIcon.destroy();
+        setTimeout(() => this.taskBarIcon.destroy(), 0);
         setTimeout(() => this.hide(), 500);
     }
 

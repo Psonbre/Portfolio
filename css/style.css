@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Hacked-KerX';
-    src: url('../assets/fonts/glitchFont.ttf') format('truetype');
+    src: url('../assets/fonts/VT323-Regular.ttf') format('truetype');
 }
 
 a{
@@ -47,7 +47,7 @@ body {
     box-shadow: rgb(0, 255, 0) 0px 0px 5px;
     position: absolute;
     width: fit-content;
-    font-size: 1.3vh;
+    font-size: 2vh;
     left: 0;
     top: 0;
     opacity: 50%;
@@ -117,11 +117,14 @@ body {
     height: 18px;
     width : 18px;
     margin: auto;
-    cursor: url('../assets/images/cursorPointer.cur'), pointer;
-    transition: all 0.1s;
 }
 
-.addressBarOption:hover {
+.minimize, .close{
+    transition: all 0.1s;
+    cursor: url('../assets/images/cursorPointer.cur'), pointer;
+}
+
+.minimize:hover, .close:hover {
     transform: scale(1.1) translate(2px, -2px);
 }
 
@@ -135,12 +138,7 @@ body {
 }
 
 .zoom{
-    border: 2px solid lime;
-}
-
-.zoom:hover{
-    box-shadow: lime 0px 0px 10px;
-    background-color: lime;
+    border: 2px solid rgba(0, 255, 0, 0.315);
 }
 
 .close{
@@ -205,12 +203,12 @@ body {
     box-sizing: border-box;
     text-align: center;
     margin-top: 1vh;
-    margin-left: 0.5vh;
+    margin-left: 1vh;
     height: 8vh;
     width: 8vh;
     overflow: visible;
     overflow-wrap: break-word;
-    font-size: 1vh;
+    font-size: 1.5vh;
 
 }
 
