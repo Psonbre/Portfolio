@@ -5,6 +5,7 @@
 
 a{
     cursor: url('../assets/images/cursorPointer.cur'), pointer;
+    color: #009100;
 }
 
 body{
@@ -231,4 +232,48 @@ body {
     width: 100%;
     color: lime;
 }
+
+@keyframes floatingAnimation {
+    0%, 100% {
+        transform: translate(0, 0) scale(var(--scale));
+    }
+    25% {
+        transform: translate(-4vh, -4vh) scale(var(--scale));
+    }
+    50% {
+        transform: translate(0, -8vh) scale(var(--scale));
+    }
+    75% {
+        transform: translate(4vh, -4vh) scale(var(--scale));
+    }
+}
+
+.floatingIcon {
+    --scale: 1;
+    animation-name: floatingAnimation;
+    animation-duration: 20s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+.floatingIcon:hover{
+    --scale: 1.05;
+}
+
+.profile:hover{
+    --scale: 1.00;
+}
+
+.floatingIcon:hover p{
+    color: lime;
+}
+
+.connection {
+    position: absolute;
+    width: 2px; /* Line thickness */
+    background-color: lime;
+    z-index: 1; /* Make sure it's below the icons */
+}
+
   
