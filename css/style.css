@@ -51,7 +51,7 @@ body {
     font-size: 2vh;
     left: 0;
     top: 0;
-    opacity: 50%;
+    opacity: 100%;
     background-color: black;
     border: 2px solid #009100;
     border-top: none;
@@ -238,13 +238,13 @@ body {
         transform: translate(0, 0) scale(var(--scale));
     }
     25% {
-        transform: translate(-4vh, -4vh) scale(var(--scale));
+        transform: translate(-3vh, -3vh) scale(var(--scale));
     }
     50% {
-        transform: translate(0, -8vh) scale(var(--scale));
+        transform: translate(0, -6vh) scale(var(--scale));
     }
     75% {
-        transform: translate(4vh, -4vh) scale(var(--scale));
+        transform: translate(3vh, -3vh) scale(var(--scale));
     }
 }
 
@@ -265,15 +265,19 @@ body {
     --scale: 1.00;
 }
 
+.floatingIcon p{
+    color: rgb(0, 177, 0);
+}
+
 .floatingIcon:hover p{
     color: lime;
 }
 
 .connection {
     position: absolute;
-    width: 2px; /* Line thickness */
+    width: 2px;
     background-color: lime;
-    z-index: 1; /* Make sure it's below the icons */
+    z-index: -1;
 }
 
   

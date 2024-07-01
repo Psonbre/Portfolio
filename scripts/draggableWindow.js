@@ -128,13 +128,14 @@ class DraggableWindow {
     }
 
     static focusWindow(windowToFocus) {
+        let highestZIndex = 0;
         DraggableWindow.instances.forEach(instance => {
             instance.window.setAttribute('focused', false);
-            instance.window.style.zIndex = 0;
+            highestZIndex = Math.max(highestZIndex, instance.window.style.zIndex)
             instance.taskBarIcon.setFocused(false);
         });
         windowToFocus.window.setAttribute('focused', true);
-        windowToFocus.window.style.zIndex = 1;
+        windowToFocus.window.style.zIndex = highestZIndex + 1;
         windowToFocus.taskBarIcon.setFocused(true);
     }
 }
