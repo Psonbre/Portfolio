@@ -51,7 +51,7 @@ body {
     font-size: 2vh;
     left: 0;
     top: 0;
-    opacity: 100%;
+    opacity: 90%;
     background-color: black;
     border: 2px solid #009100;
     border-top: none;
@@ -69,9 +69,9 @@ body {
 }
 
 .window[state="closed"]{
-    transition: all 0.25s, height 0.1s;
+    transition: all 0.5s, height 0.2s;
     height: 0;
-    opacity: 0;
+    top: 150%;
 }
 
 .addressBar{
@@ -278,6 +278,10 @@ body {
     width: 2px;
     background-color: lime;
     z-index: -1;
+}
+
+polygon{
+    transition: all 1s;
 }
 
   
