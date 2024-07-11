@@ -23,8 +23,8 @@ class DesktopIcon {
     static resetAllIconPositions(){
         for (let i = 0; i < DesktopIcon.instances.length; i++){
             let instance = DesktopIcon.instances[i];
-            const centerX = Math.floor(i / 13) * instance.el.offsetWidth;
-            const centerY = ((i + 1) % 13 - 1) * instance.el.offsetHeight;
+            const centerX = Math.floor(i / 11) * instance.el.offsetWidth;
+            const centerY = ((i + 1) % 11 - 1) * (instance.el.offsetHeight);
             instance.el.style.transform = `translate(${centerX}px, ${centerY}px)`;
             instance.offsetX = centerX;
             instance.offsetY = centerY;
@@ -91,6 +91,7 @@ new DesktopIcon("profile.info", "./assets/images/ProfileIcon.svg", new ProfileWi
 new DesktopIcon("éducation.tml", "./assets/images/education.svg", new DraggableWindow("éducation.tml", "./assets/images/education.svg", "./windowContent/education.html"));
 new DesktopIcon("travail.info", "./assets/images/work.svg", new DraggableWindow("travail.info", "./assets/images/work.svg", "./windowContent/work.html"));
 new DesktopIcon("réseaux.con", "./assets/images/connections.svg", new ConnectionsWindow("réseaux.con", "./assets/images/connections.svg", "./windowContent/networks.html"));
+new DesktopIcon("projets", "./assets/images/folder.svg", new DraggableWindow("projets", "./assets/images/folder.svg", "./windowContent/projects.html"));
 
 DesktopIcon.resetAllIconPositions();
 window.addEventListener('resize', DesktopIcon.resetAllIconPositions);

@@ -55,6 +55,7 @@ body {
     background-color: black;
     border: 2px solid #009100;
     border-top: none;
+    border-radius: 0.5vh;
     transition: top 0.5s, height 0.2s;
 }
 
@@ -77,11 +78,13 @@ body {
 .addressBar{
     position: relative;
     width: 100%;
-    height: 25px;
+    height: 2vh;
     background-color: #009100;
     outline: 2px solid #009100;
     display: flex;
     flex-direction: row-reverse;
+    border-top-left-radius: 0.5vh;
+    border-top-right-radius: 0.5vh;
     cursor: url('../assets/images/cursorMove.cur'), move;
 }
 
@@ -111,12 +114,13 @@ body {
     display: flex;
     justify-content: space-between;
     background-color: transparent;
-    width: 80px;
+    width: 6.5vh;
+    margin-right: 0.3vh;
 }
 
 .addressBarOption{
-    height: 18px;
-    width : 18px;
+    height: 1.4vh;
+    width : 1.4vh;
     margin: auto;
 }
 
@@ -205,12 +209,10 @@ body {
     text-align: center;
     margin-top: 1vh;
     margin-left: 1vh;
-    height: 8vh;
-    width: 8vh;
+    height: 100px;
+    width: 10vh;
     overflow: visible;
     overflow-wrap: break-word;
-    font-size: 1.5vh;
-
 }
 
 .desktopIcon .icon{
@@ -226,6 +228,8 @@ body {
 }
 
 .desktopIcon .name{
+    white-space: nowrap;
+    font-size: 2vh;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -284,4 +288,32 @@ polygon{
     transition: all 1s;
 }
 
+.projectWindowListContainer{
+    overflow: visible;
+}
+
+.projectWindow li{
+    cursor: url('../assets/images/cursorPointer.cur'), pointer;
+    list-style-type: square;
+    margin-top: 0.5vw;
+}
+
+.projectWindow li p{
+    transition: all 0.5s;
+}
+
+.projectWindow li[selected] p{
+    transition: all 0.2s;
+    cursor: url('../assets/images/cursorPointer.cur'), pointer;
+    transform: translate(1vw);
+    background-color: rgba(0, 255, 0, 0.534);
+    color: black;
+}
+
+.projectWindow li:hover p{
+    transition: all 0.2s;
+    transform: translate(2vw);
+    background-color: lime;
+    color: black;
+}
   
