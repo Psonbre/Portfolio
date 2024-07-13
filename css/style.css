@@ -296,6 +296,7 @@ polygon{
     cursor: url('../assets/images/cursorPointer.cur'), pointer;
     list-style-type: square;
     margin-top: 0.5vw;
+    width: 80%;
 }
 
 .projectWindow li p{
@@ -315,5 +316,9 @@ polygon{
     transform: translate(2vw);
     background-color: lime;
     color: black;
+}
+
+.projectContent{
+    overflow-y: scroll;
 }
   

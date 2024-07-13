@@ -91,7 +91,7 @@ new DesktopIcon("profile.info", "./assets/images/ProfileIcon.svg", new ProfileWi
 new DesktopIcon("éducation.tml", "./assets/images/education.svg", new DraggableWindow("éducation.tml", "./assets/images/education.svg", "./windowContent/education.html"));
 new DesktopIcon("travail.info", "./assets/images/work.svg", new DraggableWindow("travail.info", "./assets/images/work.svg", "./windowContent/work.html"));
 new DesktopIcon("réseaux.con", "./assets/images/connections.svg", new ConnectionsWindow("réseaux.con", "./assets/images/connections.svg", "./windowContent/networks.html"));
-new DesktopIcon("projets", "./assets/images/folder.svg", new DraggableWindow("projets", "./assets/images/folder.svg", "./windowContent/projects.html"));
+new DesktopIcon("projets", "./assets/images/folder.svg", new ProjectsWindow("projets", "./assets/images/folder.svg", "./windowContent/projects.html"));
 
 DesktopIcon.resetAllIconPositions();
 window.addEventListener('resize', DesktopIcon.resetAllIconPositions);
