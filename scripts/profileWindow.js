@@ -8,6 +8,7 @@ class ProfileWindow extends DraggableWindow {
             { name: "C++", value: 50 },
             { name: "CSS", value: 80 },
             { name: "Java", value: 80 },
+            { name: "GDScript", value: 50 },
         ]);
     }
 

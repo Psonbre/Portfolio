@@ -35,7 +35,7 @@ class DesktopIcon {
         this.iconEl.addEventListener('mousedown', this.startDrag.bind(this));
         document.addEventListener('mouseup', this.endDrag.bind(this));
         document.addEventListener('mousemove', this.drag.bind(this));
-        this.iconEl.addEventListener('dblclick', () => {
+        this.iconEl.addEventListener('click', () => {
             this.window.open();
         })
     }
