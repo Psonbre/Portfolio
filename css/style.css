@@ -265,12 +265,19 @@ body {
     --scale: 1.05;
 }
 
+.floatingIcon a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .profile:hover{
     --scale: 1.00;
 }
 
 .floatingIcon p{
     color: rgb(0, 177, 0);
+    font-size: 1.5vw;
 }
 
 .floatingIcon:hover p{
@@ -321,4 +328,7 @@ polygon{
 .projectContent{
     overflow-y: scroll;
 }
-  
+
+.educationWindow li{
+    font-size: 2.5vh;
+}
