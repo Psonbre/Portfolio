@@ -300,6 +300,12 @@ polygon{
 }
 
 .projectWindow li{
+    list-style-type: square;
+    margin-top: 0.5vw;
+    width: 80%;
+}
+
+.projectWindow li a, .projectWindow li p{
     cursor: url('../assets/images/cursorPointer.cur'), pointer;
     list-style-type: square;
     margin-top: 0.5vw;

@@ -34,10 +34,16 @@ class DraggableWindow {
     }
 
     attachEventListeners() {
-        this.window.addEventListener('click', () => DraggableWindow.focusWindow(this))
+        this.window.addEventListener('click', () => DraggableWindow.focusWindow(this));
         this.addressBar.addEventListener('mousedown', this.startDrag.bind(this));
         document.addEventListener('mouseup', this.endDrag.bind(this));
         document.addEventListener('mousemove', this.drag.bind(this));
+
+        // Adding touch event listeners for mobile
+        this.addressBar.addEventListener('touchstart', this.startDrag.bind(this));
+        document.addEventListener('touchend', this.endDrag.bind(this));
+        document.addEventListener('touchmove', this.drag.bind(this));
+
         this.closeIcon.addEventListener('click', this.close.bind(this));
         this.minimizeIcon.addEventListener('click', this.minimize.bind(this));
         this.zoomIcon.addEventListener('click', this.toggleZoom.bind(this));
@@ -93,8 +99,8 @@ class DraggableWindow {
 
     startDrag(event) {
         DraggableWindow.focusWindow(this);
-        this.startX = event.clientX;
-        this.startY = event.clientY;
+        this.startX = (event.touches ? event.touches[0].clientX : event.clientX);
+        this.startY = (event.touches ? event.touches[0].clientY : event.clientY);
         this.addressBar.classList.add('dragging');
         const transform = window.getComputedStyle(this.window).transform;
 
@@ -114,8 +120,8 @@ class DraggableWindow {
         if (!this.addressBar.classList.contains('dragging')) {
             return;
         }
-        const dx = event.clientX - this.startX;
-        const dy = event.clientY - this.startY;
+        const dx = (event.touches ? event.touches[0].clientX : event.clientX) - this.startX;
+        const dy = (event.touches ? event.touches[0].clientY : event.clientY) - this.startY;
         const dxVw = (dx / window.innerWidth) * 100;
         const dyVh = (dy / window.innerHeight) * 100;
         const newTransform = `translate(${Math.max(-(this.window.offsetWidth/window.innerWidth) * 100 + 1, Math.min(this.offsetX + dxVw, 99))}vw, ${Math.max(0, Math.min(this.offsetY + dyVh, 99))}vh)`;
