@@ -1,7 +1,7 @@
 let icons;
 let container;
 const linesMap = new Map();
-let isAnimating = false; // Boolean flag to control the animation
+let isAnimating = false;
 
 function updateLines() {
     const connectedPairs = new Set();
@@ -49,7 +49,6 @@ function updateLines() {
         });
     });
 
-    // Remove lines that are no longer needed
     linesMap.forEach((line, pairKey) => {
         if (!connectedPairs.has(pairKey)) {
             line.remove();

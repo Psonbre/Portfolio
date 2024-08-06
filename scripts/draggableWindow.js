@@ -39,7 +39,6 @@ class DraggableWindow {
         document.addEventListener('mouseup', this.endDrag.bind(this));
         document.addEventListener('mousemove', this.drag.bind(this));
 
-        // Adding touch event listeners for mobile
         this.addressBar.addEventListener('touchstart', this.startDrag.bind(this));
         document.addEventListener('touchend', this.endDrag.bind(this));
         document.addEventListener('touchmove', this.drag.bind(this));
@@ -151,7 +150,7 @@ class DraggableWindow {
 
 function typewriterEffect(element) {
     if (element.classList.contains('typewriting')) {
-        return; // Exit if the element is already typewriting
+        return;
     }
     element.classList.add('typewriting');
     
@@ -165,7 +164,7 @@ function typewriterEffect(element) {
             index++;
             setTimeout(type, 500 / text.length);
         } else {
-            element.classList.remove('typewriting'); // Remove the class when done
+            element.classList.remove('typewriting');
         }
     }
 
