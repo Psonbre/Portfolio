@@ -88,10 +88,10 @@ class DesktopIcon {
 }
 
 new DesktopIcon("profile.info", "./assets/images/ProfileIcon.svg", new ProfileWindow("profile.txt", "./assets/images/ProfileIcon.svg", "./windowContent/profile.html"));
-new DesktopIcon("éducation.tml", "./assets/images/education.svg", new DraggableWindow("éducation.tml", "./assets/images/education.svg", "./windowContent/education.html"));
-new DesktopIcon("travail.info", "./assets/images/work.svg", new DraggableWindow("travail.info", "./assets/images/work.svg", "./windowContent/work.html"));
-new DesktopIcon("réseaux.con", "./assets/images/connections.svg", new ConnectionsWindow("réseaux.con", "./assets/images/connections.svg", "./windowContent/networks.html"));
-new DesktopIcon("projets", "./assets/images/folder.svg", new ProjectsWindow("projets", "./assets/images/folder.svg", "./windowContent/projects.html"));
+new DesktopIcon("education.tml", "./assets/images/education.svg", new DraggableWindow("education.tml", "./assets/images/education.svg", "./windowContent/education.html"));
+new DesktopIcon("work.info", "./assets/images/work.svg", new DraggableWindow("work.info", "./assets/images/work.svg", "./windowContent/work.html"));
+new DesktopIcon("network.con", "./assets/images/connections.svg", new ConnectionsWindow("network.con", "./assets/images/connections.svg", "./windowContent/networks.html"));
+new DesktopIcon("projects", "./assets/images/folder.svg", new ProjectsWindow("projects", "./assets/images/folder.svg", "./windowContent/projects.html"));
 
 DesktopIcon.resetAllIconPositions();
 window.addEventListener('resize', DesktopIcon.resetAllIconPositions);

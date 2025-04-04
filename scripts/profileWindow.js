@@ -2,13 +2,13 @@ class ProfileWindow extends DraggableWindow {
     open() {
         super.open();
         this.createRadarChart([
-            { name: "C#", value: 90 },
+            { name: "C#", value: 75 },
             { name: "Python", value: 60 },
-            { name: "JavaScript", value: 80 },
+            { name: "JavaScript", value: 75 },
             { name: "C++", value: 50 },
-            { name: "CSS", value: 80 },
-            { name: "Java", value: 80 },
-            { name: "GDScript", value: 50 },
+            { name: "CSS", value: 75 },
+            { name: "Java", value: 75 },
+            { name: "GDScript", value: 95 },
         ]);
     }
 
