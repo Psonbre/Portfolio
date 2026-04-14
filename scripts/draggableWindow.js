@@ -52,7 +52,7 @@ class DraggableWindow {
         requestAnimationFrame(() => {
             const rect = this.window.getBoundingClientRect();
             const centerX = (window.innerWidth / 2);
-            const centerY = (window.innerHeight / 3);
+            const centerY = (window.innerHeight / 6);
             const centerXvw = (centerX / window.innerWidth) * 100;
             const centerYvh = (centerY / window.innerHeight) * 100;
             this.window.style.transform = `translate(${centerXvw}vh, ${centerYvh}vh)`;
